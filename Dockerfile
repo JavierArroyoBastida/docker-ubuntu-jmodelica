@@ -60,6 +60,8 @@ RUN pip install --upgrade jcc==3.5
 RUN export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 RUN export JCC_JDK=/usr/lib/jvm/java-8-openjdk-amd64
 
+# Copy dependencies from HSL
+COPY dependencies/coinhsl-2015.06.23 $SRC_DIR/Ipopt-3.12.4/ThirdParty/HSL/coinhsl
 # Get Install Ipopt and JModelica, and delete source code with is more than 1GB large
 RUN cd $SRC_DIR && \
     wget wget -O - http://www.coin-or.org/download/source/Ipopt/Ipopt-3.12.4.tgz | tar xzf - && \

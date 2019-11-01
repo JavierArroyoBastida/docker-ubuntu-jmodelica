@@ -1,5 +1,5 @@
 IMG_NAME=ubuntu-1804_jmodelica_trunk
-DOCKER_USERNAME=michaelwetter
+DOCKER_USERNAME=${DOCKER_USER}
 
 COMMAND_RUN=docker run \
 	  --name jmodelica \
@@ -27,6 +27,9 @@ print_latest_versions_from_svn:
 
 build:
 	docker build --no-cache --rm -t ${DOCKER_USERNAME}/${IMG_NAME} .
+
+login:
+	docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 
 push:
 	docker push ${DOCKER_USERNAME}/${IMG_NAME}
